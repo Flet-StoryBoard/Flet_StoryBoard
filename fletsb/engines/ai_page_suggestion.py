@@ -12,10 +12,13 @@ class LoopAiPageSuggestion:
 
     def run_in_loop (self):
         print("Ai Loop suggestions Started.")
-        time.sleep(1.5)
+        first_time = True
         while self.editor_class.application_class.user_on_edit_state:
             try:
-                self.get_new_suggestion()
+                if first_time:
+                    first_time = False
+                else:
+                    self.get_new_suggestion()
             except:
                 traceback.print_exc()
             

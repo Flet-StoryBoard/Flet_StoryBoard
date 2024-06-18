@@ -21,7 +21,8 @@ class CreateStoryBoardFile:
                         "center_align": True,
                         "scroll": False,
                         "auto_scroll": False,
-                        "bgcolor": None
+                        "bgcolor": None,
+                        "padding": 40
                     },
                     "widgets": [
 

@@ -3,6 +3,7 @@ import flet, threading
 class NavigationView (flet.Column):
     def __init__ (self, title:str, on_click_close):
         super().__init__()
+        self.scroll = flet.ScrollMode.AUTO
 
         # Stored-Events data
         self.last_selected = None

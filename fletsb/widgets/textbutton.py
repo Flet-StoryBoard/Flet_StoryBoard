@@ -1,4 +1,5 @@
 from .widget import Widget
+from .. import utils
 import flet
 
 
@@ -27,7 +28,13 @@ class TextButton (Widget):
             if function_name_of_event == None: return
 
             if function_name_of_event in self.storyboard_class.defined_functions:
-                self.storyboard_class.defined_functions[function_name_of_event]()
+                init_the_event_class = utils.EventClass(
+                    event_name=event_name,
+                    event_data=None,
+                    widget_id=self.data['id'],
+                    storyboard_class=self.storyboard_class
+                )
+                self.storyboard_class.defined_functions[function_name_of_event](init_the_event_class)
             else:
                 print(f"No defined function named '{function_name_of_event}'")
 

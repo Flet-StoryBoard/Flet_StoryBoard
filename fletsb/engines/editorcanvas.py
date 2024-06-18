@@ -39,4 +39,7 @@ class EditorCanvas (Canvas):
             border_radius=15,
             tooltip=f"Click to edit this {widget_class.data['widget_name']} | ID '{widget_class.data['id']}'"
         )
+        if "expand" in widget_class.data['properties']:
+            if widget_class.data['properties']['expand']:
+                cont.expand = True
         return cont

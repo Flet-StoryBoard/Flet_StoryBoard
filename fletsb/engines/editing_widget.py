@@ -50,10 +50,13 @@ class EditingWidget(flet.Column):
             fld_type = widget_class.properties_data()[field]['type']
             fld_value = widget_class.data['properties'][field]
             if fld_type == "str":
+                multiline = False
+                if "multiline" in widget_class.properties_data()[field]: multiline = True
                 fld = fields.StringField(
                         on_change_function=self.on_prop_changed,
                         original_value=fld_value, 
-                        field_name=f"{field}"
+                        field_name=f"{field}",
+                        multiline=multiline
                     )
                 self.controls.append(flet.Row([fld], alignment=flet.MainAxisAlignment.CENTER))
             

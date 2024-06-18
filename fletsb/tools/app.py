@@ -6,7 +6,9 @@ import flet
 def app (file_path:str, target, flet_app_view: flet.AppView=flet.AppView.FLET_APP):
     """Use the `app` function to start a Flet StoryBoard application via a target.
     
-    The target will get a single argument for the `StoryBoard` class."""
+    The target will get a single argument for the `StoryBoard` class.
+    
+    the `file_path` argument can be a file path or a URL."""
     def flet_app (page:flet.Page):
         def on_res(e):
             p.view.width = page.width
@@ -18,6 +20,7 @@ def app (file_path:str, target, flet_app_view: flet.AppView=flet.AppView.FLET_AP
         page.vertical_alignment = flet.MainAxisAlignment.CENTER
         page.horizontal_alignment = flet.CrossAxisAlignment.CENTER
         page.window_title_bar_hidden = True
+        page.theme_mode = flet.ThemeMode.DARK
 
         p = Production(file_path=file_path)
         page.add(p.view)

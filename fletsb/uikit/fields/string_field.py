@@ -3,7 +3,7 @@ import flet
 
 
 class StringField (flet.TextField):
-    def __init__ (self, on_change_function, original_value, field_name:str, *args, **kwargs):
+    def __init__ (self, on_change_function, original_value, field_name:str, multiline:bool=False, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.on_change_function = on_change_function
         self.field_name = field_name
@@ -16,6 +16,9 @@ class StringField (flet.TextField):
         self.hint_text = f"{field_name}.."
         self.value = original_value
         self.on_change = self.on_change_value
+
+        if multiline:
+            self.multiline = True
     
 
     def on_change_value (self, e):

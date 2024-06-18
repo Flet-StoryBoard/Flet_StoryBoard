@@ -6,10 +6,13 @@ def get_all_widgets ():
         "Title": "TITLE_ROUNDED",
         "Row": "VIEW_COLUMN_ROUNDED",
         "Column": "TABLE_ROWS_ROUNDED",
+        "Stack": "BORDER_HORIZONTAL_SHARP",
         "Paragraph": "SHORT_TEXT_ROUNDED",
         "Image": "IMAGE_OUTLINED",
         "RouteButton": "ROUTE_OUTLINED",
-        "TextButton": "SMART_BUTTON_ROUNDED"
+        "TextButton": "SMART_BUTTON_ROUNDED",
+        "TextField": "INPUT_ROUNDED",
+        "ElevatedButton": "NINETEEN_MP_ROUNDED"
     }
 
 
@@ -21,7 +24,10 @@ def get_widget_class_by_name (widget_name:str) -> widgets.Widget:
         "Paragraph": widgets.Paragraph,
         "Image": widgets.Image,
         "RouteButton": widgets.RouteButton,
-        "TextButton": widgets.TextButton
+        "TextButton": widgets.TextButton,
+        "TextField": widgets.TextField,
+        "Stack": widgets.Stack,
+        "ElevatedButton": widgets.ElevatedButton
     }
 
 

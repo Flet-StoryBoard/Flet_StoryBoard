@@ -31,14 +31,24 @@ class StoryBoard:
         """Translate the current page to a givin language."""
         pass
 
-    def edit_widget_prop (self, widget_identifier_name:str, property_name:str, new_value):
+    def edit_widget_prop (self, widget_id:int, property_name:str, new_value):
         """Update a widget's property. The changes will apply immediately."""
-        if widget_identifier_name == "":
-            raise Exception("You must give a real widget_identifier_name")
+        widget_class = tools.search_for_widget_id(
+            storyboard_class=self,
+            widget_id=widget_id
+        )
+        if property_name in widget_class.properties_data():
+            widget_class.data['properties'][property_name] = new_value
+            widget_class.update_flet_object()
+            widget_class.update_subs()
     
-    def get_property_value (self, widget_identifier_name:str, property_name:str):
-        if widget_identifier_name == "":
-            raise Exception("You must give a real widget_identifier_name")
+    def get_property_value (self, widget_id:int, property_name:str):
+        widget_class = tools.search_for_widget_id(
+            storyboard_class=self,
+            widget_id=widget_id
+        )
+        if property_name in widget_class.properties_data():
+            return widget_class.data['properties'][property_name]
 
 
     def get_new_widget_id (self):

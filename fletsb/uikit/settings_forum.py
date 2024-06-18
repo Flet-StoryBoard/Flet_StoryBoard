@@ -16,6 +16,7 @@ class PageSettingsForum (flet.Column):
     def refresh_forum (self):
         self.controls.clear()
         self.controls.append(flet.Text(f"Page is {self.editor_class.current_page_name}", color=flet.colors.GREY_400, weight=flet.FontWeight.W_300))
+        self.controls.append(flet.Text("Note: Padding only applies on production mode. You can't see it on previews.", color=flet.colors.GREY_500))
 
         current_page_settings = self.editor_class.storyboard_content['pages'][self.editor_class.current_page_name]['settings']
         for option in self.all_default_settings_properties:
@@ -44,6 +45,14 @@ class PageSettingsForum (flet.Column):
                     field_name=option,
                     on_change_function=self.on_change_setting_option,
                     original_value=field_real_value
+                )
+                self.controls.append(fld)
+            
+            elif field_type == "int":
+                fld = fields.NumbersField(
+                    field_name=option,
+                    on_change_function=self.on_change_setting_option,
+                    original_number=f"{int(field_real_value)}"
                 )
                 self.controls.append(fld)
 
@@ -77,5 +86,6 @@ class PageSettingsForum (flet.Column):
             "center_align": {'type': 'bool', 'default': True},
             "scroll": {'type': 'bool', 'default': True},
             "auto_scroll": {'type': 'bool', 'default': True},
-            "bgcolor": {'type': 'color', "default": "black"}
+            "bgcolor": {'type': 'color', "default": "black"},
+            "padding": {"type": "int", "default": 40}
         }

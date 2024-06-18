@@ -52,6 +52,10 @@ class Canvas:
         self.main_col.auto_scroll = page_settings['auto_scroll']
         self.view.bgcolor = page_settings['bgcolor']
 
+        # Update page padding
+        if not self.main_class.storyboard_class.development_mode:
+            self.view.padding = int(page_settings['padding'])
+
         # Update page title
         if self.main_col.page != None:
             self.main_col.page.title = self.main_class.current_page_name
