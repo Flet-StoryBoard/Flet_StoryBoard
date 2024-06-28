@@ -54,6 +54,7 @@ class Application:
         self.page.on_resize = self.on_page_resize
         self.on_page_resize()
         self.page.update()
+        self.page.window_center()
     
 
     def on_page_resize (self, e=None):

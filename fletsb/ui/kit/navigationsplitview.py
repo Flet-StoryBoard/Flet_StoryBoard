@@ -17,7 +17,7 @@ class NavigationSplitView (flet.Row):
             border=flet.border.only(right=flet.BorderSide(width=1, color="#323232")),
             padding=20
         )
-        self.controls.append(self.menu_section)
+        self.controls.append(flet.WindowDragArea(content=self.menu_section))
 
         
         self.content_section = flet.Container(
