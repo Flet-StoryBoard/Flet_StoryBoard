@@ -35,7 +35,7 @@ class AlertsHintTooltipLayer (flet.Stack):
             spacing=3
         )
 
-        r.controls.append(flet.Text(value=f"{text}   ", color=flet.colors.BLACK, size=13, expand=True))
+        r.controls.append(flet.Text(value=f"{text}   ", color=flet.colors.BLACK, size=14, expand=True, overflow=flet.TextOverflow.ELLIPSIS))
 
         if keyboard_shortcut1 is not None:
             ks1 = flet.Container(

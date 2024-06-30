@@ -23,19 +23,19 @@ class SimpleAppBar (flet.Row):
         # Elements
         self.navigationsplitview_btn = flet.IconButton(
             icon=flet.icons.MENU_ROUNDED,
-            on_click=lambda e: self.switch_navigationsplitview_menu()
+            on_click=self.switch_navigationsplitview_menu
         )
         self.controls.append(ButtonHolder(
             content=self.navigationsplitview_btn,
             keyboard_shortcut_name="Toggle Menu",
             keyboard_shortcut_key1="CTRL",
-            keyboard_shortcut_key2="n"
+            keyboard_shortcut_key2="N"
         ))
 
         # Spacer
         self.controls.append(flet.Text("", expand=True))
 
-    def switch_navigationsplitview_menu (self):
+    def switch_navigationsplitview_menu (self, e=None):
         if self.navigationsplitview.menu_section_hidden:
             self.navigationsplitview.show_menu()
         else:

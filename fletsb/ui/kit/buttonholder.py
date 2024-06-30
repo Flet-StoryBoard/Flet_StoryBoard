@@ -34,3 +34,37 @@ class ButtonHolder (flet.Container):
         else:
             self.is_still_hovered_at = False
             app_class.alerts_and_hinttooltip_layer.hide_tooltip()
+    
+
+    def button_function_called_from_shortcut (self):
+        app_class = self.page.app_class
+        app_class.alerts_and_hinttooltip_layer.hide_tooltip()
+
+        if self.content.visible == False or self.content.page is None:
+            # Do not do event if button is not apeared to be existed
+            return
+
+        try:
+            self.content.on_click()
+        except Exception as e:
+            print(f"Error while running shortcut '{self.keyboard_shortcut_key1}+{self.keyboard_shortcut_key2}': {e}")
+
+
+    @property
+    def page (self):
+        return self.__page
+    
+    @page.setter
+    def page (self, value):
+        self.__page = value
+
+        # Give app shortcuts the button function
+        if hasattr(self.content, "on_click"):
+            if self.content.on_click != None:
+                self.__page.app_class.keyboard_shortcuts_with_functions.append(
+                    {
+                        "main_key": self.keyboard_shortcut_key1,
+                        "sub_key": self.keyboard_shortcut_key2,
+                        "function": self.button_function_called_from_shortcut
+                    }
+                )

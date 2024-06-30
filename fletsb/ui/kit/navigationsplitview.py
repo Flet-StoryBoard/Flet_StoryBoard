@@ -15,7 +15,7 @@ class NavigationSplitView (flet.Row):
         self.menu_section = flet.Container(
             animate=flet.animation.Animation(duration=self.animation_duration, curve=flet.AnimationCurve.EASE_IN),
             border=flet.border.only(right=flet.BorderSide(width=1, color="#323232")),
-            padding=20
+            padding=15
         )
         self.controls.append(flet.WindowDragArea(content=self.menu_section))
 
@@ -27,10 +27,12 @@ class NavigationSplitView (flet.Row):
     
 
     def hide_menu (self):
+        self.menu_section.opacity = 0
         self.__menu_section_hidden = True
         self.update_event()
 
     def show_menu (self):
+        self.menu_section.opacity = 1
         self.__menu_section_hidden = False
         self.update_event()
     
